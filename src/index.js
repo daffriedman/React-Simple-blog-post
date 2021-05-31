@@ -1,17 +1,50 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom";
+import CommentDetail from "./CommentDetail";
+import ApprovalCard from "./ApprovalCard";
+import faker from "faker";
+const App = () => {
+  let date = new Date();
+  let dateString =
+    // date.getUTCFullYear() +
+    // "/" +
+    // (date.getUTCMonth() + 1) +
+    // "/" +
+    // date.getUTCDate() +
+    // " " +
+    date.getUTCHours() +
+    ":" +
+    date.getUTCMinutes() +
+    ":" +
+    date.getUTCSeconds();
+  return (
+    <div className="ui container comment">
+      <ApprovalCard>
+        <CommentDetail
+          avatar={faker.image.avatar()}
+          author="Jack"
+         timeStamp={dateString}
+          postMessage="Good Times"
+        />
+      </ApprovalCard>
+      <ApprovalCard>
+        <CommentDetail
+          avatar={faker.image.avatar()}
+          author="Jane"
+         timeStamp={dateString}
+          postMessage="Say What?"
+        />
+      </ApprovalCard>
+      <ApprovalCard>
+        <CommentDetail
+          avatar={faker.image.avatar()}
+          author="Mack"
+         timeStamp={dateString}
+          postMessage="Up in the sky "
+        />
+      </ApprovalCard>
+    </div>
+  );
+};
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+ReactDOM.render(<App />, document.querySelector("#root"));
